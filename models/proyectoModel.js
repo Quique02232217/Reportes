@@ -10,4 +10,18 @@ const buscarProyectoPorCodigo = async (codigo) => {
   return rows[0];
 };
 
-module.exports = { buscarProyectoPorCodigo };
+const buscarFuenteSQLPorCodigo = async (codigo) => {
+  const [rows] = await pool.execute(
+    `
+    SELECT *
+    FROM fuentes_datos_sql
+    WHERE db_name LIKE CONCAT(?, '_%')
+    LIMIT 1
+    `,
+    [codigo]
+  );
+
+  return rows.length ? rows[0] : null;
+};
+
+module.exports = { buscarProyectoPorCodigo, buscarFuenteSQLPorCodigo };

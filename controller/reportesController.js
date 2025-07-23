@@ -1,5 +1,6 @@
 const {
   obtenerReportesPorCodigoProyecto,
+  ejecutarReporte,
 } = require("../services/reporteService");
 
 const getReportesPorProyecto = async (req, res) => {
@@ -13,4 +14,12 @@ const getReportesPorProyecto = async (req, res) => {
   }
 };
 
-module.exports = { getReportesPorProyecto };
+const ejecutarReportes = async (req, res) => {
+  try {
+    await ejecutarReporte(req, res);
+  } catch (error) {
+    res.status(404).json({ error: error.message });
+  }
+};
+
+module.exports = { getReportesPorProyecto, ejecutarReportes };
