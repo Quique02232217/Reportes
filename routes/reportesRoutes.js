@@ -48,7 +48,7 @@ const {
 
 /**
  * @swagger
- * /api/proyecto/{codigo_proyecto}:
+ * /proyecto/{codigo_proyecto}:
  *   get:
  *     summary: Obtener los reportes de un proyecto por su código
  *     tags:
@@ -73,11 +73,11 @@ const {
  *         description: Proyecto no encontrado
  */
 
-router.get("/api/proyecto/:codigo_proyecto", getReportesPorProyecto);
+router.get("/proyecto/:codigo_proyecto", getReportesPorProyecto);
 
 /**
  * @swagger
- * /api/proyecto/{codigo_proyecto}/reporte/{id_reporte}/ejecutar:
+ * /proyecto/{codigo_proyecto}/reporte/{id_reporte}/ejecutar:
  *   get:
  *     summary: Ejecutar un reporte específico de un proyecto
  *     tags:
@@ -129,7 +129,7 @@ router.get("/api/proyecto/:codigo_proyecto", getReportesPorProyecto);
  *         description: Reporte no encontrado
  */
 router.get(
-  "/api/proyecto/:codigo_proyecto/reporte/:id_reporte/ejecutar",
+  "/proyecto/:codigo_proyecto/reporte/:id_reporte/ejecutar",
   ejecutarReportes
 );
 
